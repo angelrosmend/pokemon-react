@@ -1,16 +1,17 @@
 import React, { useContext } from 'react'
 import { PokemonContext } from '../../../context/PokemonContext'
 import PokemonCard from './PokemonCard'
+import Slider from 'react-slick'
+import { fiveItemsSettings } from '../../../helpers/carouselSettings'
+import { Spinner } from 'reactstrap'
 
-function PokemonList() {
-    const {data} = useContext(PokemonContext)
+function PokemonList(props) {
+    const {data, loading} = useContext(PokemonContext)
 
     return (
         <div className='pokemon-list'>
-            <div className="row">
-                {data && data.map(pokemon => {
-                    return <PokemonCard pokemon={pokemon}/>
-                })}
+            <div className="cards-wrapper container-fluid align-items-center">
+            {props.children}
             </div>
         </div>
     )

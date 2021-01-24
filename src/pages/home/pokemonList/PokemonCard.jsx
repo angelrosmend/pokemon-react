@@ -4,9 +4,9 @@ function PokemonCard({pokemon}) {
   console.log('pokemon', pokemon)
   const {id, name, sprites} = pokemon
     return (
-        <div className='card'>
+        <div className='pokemon-card mx-2'>
             <img src={sprites.front_default} alt=""/>
-            <span>{id}</span> <span>{name}</span>
+           <div className='text-white'> <span>{id}</span> <span>{name}</span></div>
         </div>
     )
 }
