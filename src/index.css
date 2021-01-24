@@ -1,3 +1,16 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --grdWhite: linear-gradient(45deg, rgb(201, 201, 201) 35%, rgb(238, 238, 238));
+  --grdBlack: linear-gradient(45deg, rgb(14, 15, 14)35%, rgb(34, 29, 29), rgb(58, 59, 58));
+  --mainBlack: rgb(14, 15, 14);
+  --mainRed:  rgb(160, 0, 21);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +23,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.test{
+  border: 1px solid blue;
 }
