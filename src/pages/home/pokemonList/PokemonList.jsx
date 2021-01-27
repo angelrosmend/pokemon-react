@@ -1,9 +1,6 @@
 import React, { useContext } from 'react'
 import { PokemonContext } from '../../../context/PokemonContext'
-import PokemonCard from './PokemonCard'
-import Slider from 'react-slick'
-import { fiveItemsSettings } from '../../../helpers/carouselSettings'
-import { Spinner } from 'reactstrap'
+import './pokemon-home.css'
 
 function PokemonList(props) {
     const {data, loading} = useContext(PokemonContext)

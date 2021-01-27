@@ -27,31 +27,6 @@ right: 0;
 clip-path: polygon(100% 100%,100% 0,100% 0%,0 100%);
 }
 
-.pokemon-list{
-    width: 85%;
-    height: 60vh;
-    background-color: rgba(0, 0, 0, 0.432);
-    margin: auto;
-    z-index: 1;
-    border-radius: 10vh;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-.cards-wrapper{
-    width: 90%!important;
-    height: auto;
-    margin: auto;
-    
-}
-.pokemon-card{
-    width: 180px;
-    height: 200px;
-    background: rgba(161, 161, 159, 0.103);
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-}
 
 .go-back{
     position: absolute;
