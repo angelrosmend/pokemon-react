@@ -1,0 +1,66 @@
+import {useEffect, useState} from 'react'
+import axios from 'axios'
+
+
+export const useFetch = (urlPoke, language) => {
+
+    const [state, setState] = useState({data: [],
+                                       loading: true,
+                                       nextPage: null,
+                                       prevPage: null,
+                                       error: ''})
+
+    useEffect(() => {
+        let cancel 
+        axios.get(urlPoke, {
+                cancelToken: new axios.CancelToken(c => cancel = c)
+             })
+             .then(response => {
+             let results = response.data.results
+             let urls = results.map(item => item.url)
+             const fetchPokemon = urlPokemon => axios.get(urlPokemon)
+                                                     .then(pokemon => pokemon.data)
+                                                     .catch(errPokemon => errPokemon)
+             const getPokemonData = urls => Promise.all(urls.map(fetchPokemon))
+             getPokemonData(urls).then(pokemonList =>{
+                let ids = pokemonList.map(item => item.id)
+                let sprites = pokemonList.map(item => item.sprites)
+                let urlsSpecies = pokemonList.map(item => item.species.url)
+               getPokemonData(urlsSpecies).then(dataSpecies =>{
+                let names = dataSpecies.map(pokemon => pokemon.names)
+                                       .map(name => name
+                                       .find(item => item.language.name === language))
+                                       .map(nombre => nombre.name)
+                 function createPokemonObject(arr1, arr2, arr3) {
+                     let data = []
+                     let i = 0
+                     while(i < ids.length){
+                         data.push({id: arr1[i], name: arr2[i], sprites: arr3[i]})
+                         i++
+                     }
+                     return data
+                 }
+                 let list = createPokemonObject(ids, names, sprites)
+                 setState({
+                    data: list,
+                    loading: false,
+                    nextPage: response.data.next,
+                    prevPage: response.data.previous,
+                    error: ''
+                   })
+                })
+             })
+             }).catch(error => {
+                 setState({
+                     data: [],
+                     loading: false,
+                     nextPage: null,
+                     prevPage: null,
+                     error: error
+                 })
+             }); 
+            return () => cancel()           
+    }, [urlPoke, language]);
+    return state
+}
+
