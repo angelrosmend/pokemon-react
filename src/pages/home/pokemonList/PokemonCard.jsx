@@ -11,7 +11,7 @@ function PokemonCard({pokemon, favorite}) {
 
   let image = sprites.front_default
     return (
-        <div className='pokemon-card mx-2'>
+        <div className='pokemon-card mx-2 '>
      
           { favorite ? <i  onClick={() => unlikePokemon({id, name, image})} 
           className="fas fa-heart liked-pokemon"/>

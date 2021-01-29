@@ -81,3 +81,12 @@
     right: 3%;
     color: var(--mainRed);
    }
+
+   @media only screen and (max-width: 600px) {
+    .cards-wrapper{
+        position: relative;
+    }
+    .pokemon-card{
+        left: 15%;
+    }
+   }

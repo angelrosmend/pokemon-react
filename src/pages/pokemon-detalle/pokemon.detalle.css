@@ -26,6 +26,12 @@
     background-size: cover;
     min-height: 100vh;
 }
+.titulo-pokemon{
+    color: rgb(202, 201, 201);
+    letter-spacing: 2px;
+    font-size: 45px;
+    text-transform: uppercase;
+}
 .info-tabla{
     width: 95%;
     min-height: 80%;

@@ -1,7 +1,6 @@
-import axios from 'axios';
 import React,{useEffect, useState} from 'react'
 import { useFetch } from '../hooks/useFetch';
-import es from '../helpers/languages/es.json'
+import textLang from '../helpers/languages/textLang.json'
 export const PokemonContext = React.createContext(null)
 
 export const PokemonContextProvider = (props) => {
@@ -14,7 +13,7 @@ export const PokemonContextProvider = (props) => {
     const selectEn = () => setLanguage(english)
     const selectEs = () => setLanguage(español)
     const selectDe = () => setLanguage(deutsch)
-    const text = es
+    const text = textLang
 
     /*CONFIG FETCH Y PAGINADO*/
     const pokemonUrl = `${process.env.REACT_APP_BASE_URL}pokemon?limit=10&offset=0`
@@ -29,7 +28,6 @@ export const PokemonContextProvider = (props) => {
 
     const [favoritosPokemon, setFavoritosPokemon] = useState([])
   
-
     const likePokemon = (pokemon) => setFavoritosPokemon([...favoritosPokemon, {...pokemon, favorite: pokemon.favorite = true}]);
     
     const unlikePokemon = (pokemon) => {
@@ -46,7 +44,7 @@ export const PokemonContextProvider = (props) => {
    
     useEffect(() => {
       getFavoritos()
-    }, [favoritosPokemon])
+    }, [favoritosPokemon,language])
     console.log('fav',favoritosPokemon)
  
     

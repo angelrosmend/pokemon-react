@@ -13,9 +13,8 @@ function Description({idPokedex, name, description,types, text, habitat: Habitat
 
     return (
     <div className="description-container">
-        <h2 className='text-white text-center'>{name}</h2>
+        <h1 className='titulo-pokemon text-center'>{name}</h1>
         <br/>
-    
         <div className="info-tabla">
         <p className='text-white text-center'>{description.flavor_text}</p>
         <div className="tabla-detalle ">

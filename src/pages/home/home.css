@@ -30,11 +30,18 @@ clip-path: polygon(100% 100%,100% 0,100% 0%,0 100%);
 
 .go-back{
     position: absolute;
+    color: white!important;
     top: 0;
     left: 0;
+    margin-bottom: 1vh;
 }
 .go-next{
+    color: white!important;
     position: absolute;
     bottom: 0;
     right: 0;
+    margin-top: 2vh;
+}
+.go-next:hover, .go-back:hover{
+    color: rgb(172, 172, 172)!important;
 }

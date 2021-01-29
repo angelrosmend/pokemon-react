@@ -30,7 +30,11 @@ function Header(props){
 
   return (
       <Navbar className='shadow' color="light" light expand="md">
-        <NavbarBrand href="/"><img className='logo' src={logoPokedex}/></NavbarBrand>
+        <NavbarBrand>
+          <Link to='/'>
+           <img className='logo' src={logoPokedex}/>
+        </Link>
+          </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto mr-5" navbar>
