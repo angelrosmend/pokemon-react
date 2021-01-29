@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React,{useEffect, useState} from 'react'
 import { useFetch } from '../hooks/useFetch';
-
+import es from '../helpers/languages/es.json'
 export const PokemonContext = React.createContext(null)
 
 export const PokemonContextProvider = (props) => {
 
+  /*CONFIG IDIOMA*/
     const español = 'es'
     const english = 'en'
     const deutsch = 'de'
@@ -13,19 +14,44 @@ export const PokemonContextProvider = (props) => {
     const selectEn = () => setLanguage(english)
     const selectEs = () => setLanguage(español)
     const selectDe = () => setLanguage(deutsch)
-    console.log('lang',language)
+    const text = es
 
+    /*CONFIG FETCH Y PAGINADO*/
     const pokemonUrl = `${process.env.REACT_APP_BASE_URL}pokemon?limit=10&offset=0`
-
     const [currentPage, setCurrentPage] = useState(pokemonUrl)
 
-    const {data, names, prevPage, nextPage, loading, error} = useFetch(currentPage, language)
+    const {data,  prevPage, nextPage, loading, error} = useFetch(currentPage, language)
 
     const gotoNextPage = () => setCurrentPage(nextPage)
     const gotoPrevPage = () => setCurrentPage(prevPage)
+
+    /*CONFIG FAVORITOS*/
+
+    const [favoritosPokemon, setFavoritosPokemon] = useState([])
+  
+
+    const likePokemon = (pokemon) => setFavoritosPokemon([...favoritosPokemon, {...pokemon, favorite: pokemon.favorite = true}]);
+    
+    const unlikePokemon = (pokemon) => {
+      setFavoritosPokemon((currentFav )=> {
+        const indexPokemon = currentFav.findIndex(favPoke => favPoke.id === pokemon.id)
+        if(indexPokemon === -1)return currentFav
+        return [
+          ...currentFav.slice(0, indexPokemon),
+          ...currentFav.slice(indexPokemon + 1)
+        ]
+      })
+    }
+    const getFavoritos = () => favoritosPokemon
+   
+    useEffect(() => {
+      getFavoritos()
+    }, [favoritosPokemon])
+    console.log('fav',favoritosPokemon)
+ 
     
     return (
-      <PokemonContext.Provider value={{data, gotoNextPage, gotoPrevPage, loading, nextPage, prevPage, language, selectEn, selectEs, selectDe}}>
+      <PokemonContext.Provider value={{data, gotoNextPage, gotoPrevPage, loading, nextPage, prevPage, language, selectEn, selectEs, selectDe, text, likePokemon, favoritosPokemon, unlikePokemon}}>
         {props.children}
       </PokemonContext.Provider>
     );

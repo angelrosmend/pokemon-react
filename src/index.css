@@ -9,6 +9,7 @@
   --grdBlack: linear-gradient(45deg, rgb(14, 15, 14)35%, rgb(34, 29, 29), rgb(58, 59, 58));
   --mainBlack: rgb(14, 15, 14);
   --mainRed:  rgb(160, 0, 21);
+  --mainCrimson: rgb(175, 18, 39);
 }
 
 body {
@@ -20,10 +21,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.subtitle{
+  color: rgb(175, 18, 39)!important;
+  text-transform: capitalize;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.test{
+.tb{
   border: 1px solid blue;
+}
+
+.tr{
+  border: 1px solid red;
+}
+.ty{
+  border: 1px solid yellow;
+}
+.tg{
+  border: 1px solid green;
+}
+.tw{
+  border: 1px solid white;
 }

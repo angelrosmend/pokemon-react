@@ -19,20 +19,16 @@ export const useFetchDetails = (urlPoke, language) => {
           
              let results = response.data
              const {id, types, height, weight, stats, sprites} = results
-     /*  
-             let types = response.data.types
-             let height = response.data.height
-             let weight = response.data. */
+
              let urlSpecies = response.data.species.url
              let urls = [urlSpecies]
              const fetchData = urls => axios.get(urls)
-                                            .then(res => res.data/* */)
+                                            .then(res => res.data)
                                             .catch(err=> err)
              const getPokemonData = urls => Promise.all(urls.map(fetchData))
             
-             getPokemonData(urls, sprites, types).then(data => {
+             getPokemonData(urls, sprites, types, height, weight).then(data => {
                const images = sprites
-               console.log('img', images)
                let habitat = data[0].habitat
               let idPoke = data[0].id
                let description = data[0].flavor_text_entries.filter(flavor => flavor.version.name === 'alpha-sapphire').find(flavor => flavor.language.name === language )
@@ -40,20 +36,17 @@ export const useFetchDetails = (urlPoke, language) => {
                function gatherPokemonData(id, name, images, description, types, habitat, height, weight, stats) {
                  let data = []
 
-                  data.push({     id,
-                                  name, 
-                                  images, 
-                                  description,
-                                  types,
-                                  habitat
-                                /*height: height,
-                                  weight: weight,
-                                  stats: stats,
-                                  habitat: habitat */ })
-                  return data
-                          
+                data.push({     id,
+                                name, 
+                                images, 
+                                description,
+                                types,
+                                habitat,
+                                height,
+                                weight })
+                  return data   
                }
-               let pokemonInfo = gatherPokemonData(idPoke, name.name, images, description, types, habitat/*  sprites, description,types, height, weight,stats, habitat */)
+               let pokemonInfo = gatherPokemonData(idPoke, name.name, images, description, types, habitat, height, weight)
                setState({
                 data: pokemonInfo,
                 loading: false, 

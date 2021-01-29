@@ -23,7 +23,10 @@ function Header(props){
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const {selectEs, selectEn, selectDe} = useContext(PokemonContext)
+  const {selectEs, selectEn, selectDe, text, language} = useContext(PokemonContext)
+  let fav = text.favorite.find(item => item.id == language).name
+  let textSelect = text.idioma.find(item => item.id == language)
+
 
   return (
       <Navbar className='shadow' color="light" light expand="md">
@@ -32,22 +35,22 @@ function Header(props){
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto mr-5" navbar>
             <NavItem>
-              <Link to='/favorites' className='nav-link'>Favoritos</Link>
+              <Link to='/favorites' className='nav-link'>{fav}</Link>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Lenguaje
+                {textSelect.lang}
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem onClick={selectEs}>
-                 Español
+                 {textSelect.es}
                 </DropdownItem>
                 <DropdownItem onClick={selectEn}>
-                  English
+                  {textSelect.en}
                 </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem onClick={selectDe}>
-                  Deutsch
+                  {textSelect.de}
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

@@ -1,13 +1,12 @@
 import { Carousel } from 'react-bootstrap'
-import React,{useState} from 'react'
+import React from 'react'
 
 function SliderSprites({images, habitat}) {
 
     return (
     <div className="slider-container"  style={{backgroundImage:`url(/img/habitats/${habitat.name}.gif)`,
                                                backgroundSize: 'cover',
-                                               height: '100vh'
-                                                }}>
+                                               height: '100vh'}}>
         <div className="slider-wrapper ">
           <Carousel>
             <Carousel.Item>

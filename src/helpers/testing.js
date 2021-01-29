@@ -13,14 +13,12 @@ const convertArrayToObject = (array, key) =>
 
 let results = convertArrayToObject(names, 'id')
 
-console.log(results)
 
 function createData( arr1, arr2, arr3){
 let data = []
 let i = 0;
 
 while(i < arr1.length){
-/*  for(; i < arr2.length && i < arr3.length; i++){ */
    data.push({id: arr1[i], name: arr2[i], img: arr3[i]})
    i++
  
@@ -29,4 +27,3 @@ return data
 }
 
 let resultData = createData(ids, names, imgs)
-console.log(resultData)

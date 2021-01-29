@@ -9,7 +9,9 @@ import PokemonCard from './pokemonList/PokemonCard'
 import PokemonList from './pokemonList/PokemonList'
 
 function Home() {
-    const {data, loading}=  useContext(PokemonContext)
+    const {data, favoritosPokemon, loading}=  useContext(PokemonContext)
+    console.log('home', favoritosPokemon)
+
     return (
         <div className='home'>
             <PrevPage/>
@@ -20,7 +22,10 @@ function Home() {
                 <Slider {...fiveItemsSettings}>
                 {data && data.map(pokemon => {
                     const {id} = pokemon
-                    return <PokemonCard key={id} pokemon={pokemon}/>
+                    const isFavorite =  favoritosPokemon.map(item=> item.id).includes(id)
+                    return <PokemonCard key={id}
+                                        favorite={isFavorite}
+                                        pokemon={pokemon}/>
                 })}
                 </Slider>}
             </PokemonList>

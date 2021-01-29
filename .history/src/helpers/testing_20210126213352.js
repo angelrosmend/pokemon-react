@@ -1,2 +1,0 @@
-let names = []
-let arra
