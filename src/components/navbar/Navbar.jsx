@@ -7,12 +7,10 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  NavbarText
+  DropdownItem
 } from 'reactstrap';
 import { logoPokedex } from '../../assets/img';
 import { Link } from 'react-router-dom';
@@ -24,15 +22,15 @@ function Header(props){
   const toggle = () => setIsOpen(!isOpen);
 
   const {selectEs, selectEn, selectDe, text, language} = useContext(PokemonContext)
-  let fav = text.favorite.find(item => item.id == language).name
-  let textSelect = text.idioma.find(item => item.id == language)
+  let fav = text.favorite.find(item => item.id === language).name
+  let textSelect = text.idioma.find(item => item.id === language)
 
 
   return (
       <Navbar className='shadow' color="light" light expand="md">
         <NavbarBrand>
           <Link to='/'>
-           <img className='logo' src={logoPokedex}/>
+           <img className='logo' src={logoPokedex} alt=''/>
         </Link>
           </NavbarBrand>
         <NavbarToggler onClick={toggle} />

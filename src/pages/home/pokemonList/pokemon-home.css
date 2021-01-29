@@ -88,5 +88,15 @@
     }
     .pokemon-card{
         left: 15%;
+        margin: auto 5vw;
+    }
+   }
+   @media only screen and (max-width: 480px) {
+    .cards-wrapper{
+        position: relative;
+    }
+    .pokemon-card{
+        left: 0%;
+        margin: auto 5vw;
     }
    }

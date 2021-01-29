@@ -3,13 +3,11 @@ import React from 'react'
 
 function Description({idPokedex, name, description,types, text, habitat: Habitat,height,weight, language}) {
 
-    const data = text.habitat.find(item => item.name == Habitat.name).languages.find(item => item.id == language)
+    const data = text.habitat.find(item => item.name === Habitat.name).languages.find(item => item.id === language)
     const {text: title, name:location} = data
     const heightText = text.height.find(item => item.id === language).name
     const weightText = text.weight.find(item => item.id === language).name
   
-
-
 
     return (
     <div className="description-container">
@@ -29,9 +27,7 @@ function Description({idPokedex, name, description,types, text, habitat: Habitat
                 </div>
             </div>
             <div className="types">
-
                 <div className="types-wrapper">
-
                 { types && types.map( type =>{
                     return <img className='type-icon' src={`/img/types/${type.type.name}.png`} alt=""/>
                 }
@@ -39,10 +35,8 @@ function Description({idPokedex, name, description,types, text, habitat: Habitat
                 </div>
             </div>
         </div>
-        
-
         </div>
-
+       
     </div>
     )
 }

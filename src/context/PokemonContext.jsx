@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{ useState} from 'react'
 import { useFetch } from '../hooks/useFetch';
 import textLang from '../helpers/languages/textLang.json'
 export const PokemonContext = React.createContext(null)
@@ -9,7 +9,7 @@ export const PokemonContextProvider = (props) => {
     const español = 'es'
     const english = 'en'
     const deutsch = 'de'
-    const [language, setLanguage] = useState(english)
+    const [language, setLanguage] = useState(español)
     const selectEn = () => setLanguage(english)
     const selectEs = () => setLanguage(español)
     const selectDe = () => setLanguage(deutsch)
@@ -19,7 +19,7 @@ export const PokemonContextProvider = (props) => {
     const pokemonUrl = `${process.env.REACT_APP_BASE_URL}pokemon?limit=10&offset=0`
     const [currentPage, setCurrentPage] = useState(pokemonUrl)
 
-    const {data,  prevPage, nextPage, loading, error} = useFetch(currentPage, language)
+    const {data,  prevPage, nextPage, loading} = useFetch(currentPage, language)
 
     const gotoNextPage = () => setCurrentPage(nextPage)
     const gotoPrevPage = () => setCurrentPage(prevPage)
@@ -40,13 +40,7 @@ export const PokemonContextProvider = (props) => {
         ]
       })
     }
-    const getFavoritos = () => favoritosPokemon
-   
-    useEffect(() => {
-      getFavoritos()
-    }, [favoritosPokemon,language])
-    console.log('fav',favoritosPokemon)
- 
+
     
     return (
       <PokemonContext.Provider value={{data, gotoNextPage, gotoPrevPage, loading, nextPage, prevPage, language, selectEn, selectEs, selectDe, text, likePokemon, favoritosPokemon, unlikePokemon}}>

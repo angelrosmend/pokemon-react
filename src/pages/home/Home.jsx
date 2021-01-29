@@ -10,7 +10,7 @@ import PokemonList from './pokemonList/PokemonList'
 
 function Home() {
     const {data, favoritosPokemon, loading}=  useContext(PokemonContext)
-    console.log('home', favoritosPokemon)
+
 
     return (
         <div className='home'>

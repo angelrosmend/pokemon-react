@@ -6,10 +6,10 @@ export function PrevPage() {
    let textPrev = text.back.find(item => item.id === language).name
     return (
     <div className="back">
-        { prevPage ? <a onClick={gotoPrevPage} className="btn go-back rounded-pill d-flex ">
-           <p className='m-auto '><i className="fas fa-arrow-left mr-3"> 
-            </i>{textPrev}</p>
-            </a>: null}
+        { prevPage ? <button  onClick={gotoPrevPage} className="btn go-back rounded-pill d-flex ">
+           <p className='m-auto '><i className="fas fa-arrow-left mr-1"></i>{textPrev}</p>
+            </button>
+          : null}
     </div>
     )
 }
@@ -19,10 +19,10 @@ export function NextPage() {
     let textNext = text.next.find(item => item.id === language).name
     return (
         <div className="next">
-        {nextPage ? <a onClick={gotoNextPage} className="btn go-next rounded-pill d-flex">
+        {nextPage ? <button onClick={gotoNextPage} className="btn go-next rounded-pill d-flex">
           <p className=' m-auto'>{textNext} <i className="fas fa-arrow-right mr-3">
            </i></p>
-           </a>:null}
+           </button>:null}
          </div>
     )
 }

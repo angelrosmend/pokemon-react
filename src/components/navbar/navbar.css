@@ -17,3 +17,8 @@
 .nav-link:hover{
     color: rgb(160, 0, 21)!important;
 }
+@media only screen and (max-width: 600px) {
+    .logo{
+        width: 25vw;
+    }
+}

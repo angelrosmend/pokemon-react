@@ -1,5 +1,4 @@
 
-import { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/navbar/Navbar';
@@ -20,6 +19,7 @@ function App() {
       <Route path='/' exact component={Home}/>
       <Route path='/pokemon/:id' component={PokemonDetalle}/>
       <Route path='/favorites' component={Favorites}/>
+      <Route component={Home}/>
       </Switch>
       </BrowserRouter>
     </PokemonContextProvider>
