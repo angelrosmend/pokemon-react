@@ -7,10 +7,13 @@ import Favorites from './pages/favorites/Favorites';
 import Home from './pages/home/Home';
 import PokemonDetalle from './pages/pokemon-detalle/PokemonDetalle';
 
-function App() {
-  
 
-  
+
+
+
+
+function App() {
+
   return (
     <PokemonContextProvider>
       <BrowserRouter>
